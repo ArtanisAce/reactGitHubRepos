@@ -1,7 +1,7 @@
 {
-  "name": "react-hot-boilerplate",
+  "name": "reactGitHubRepos",
   "version": "1.0.0",
-  "description": "Boilerplate for ReactJS project with hot code reloading",
+  "description": "React application for searching GitHub repositories",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/react-hot-boilerplate.git"
+    "url": "https://github.com/ArtanisAce/reactGitHubRepos"
   },
   "keywords": [
     "react",
@@ -22,7 +22,7 @@
     "edit",
     "webpack"
   ],
-  "author": "Dan Abramov <dan.abramov@me.com> (http://github.com/gaearon)",
+  "author": "Pedro Pablo Miron Pozo",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gaearon/react-hot-boilerplate/issues"
