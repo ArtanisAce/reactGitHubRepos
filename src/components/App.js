@@ -28,29 +28,48 @@ var App = React.createClass({
     };
   },
 
-  updateRepoList: function(){
+  // updateRepoList: function(){
 
-    //Retrieves 100 repositories by the keyword selected on the params
-    var repositories = [];
-    fetch('https://api.github.com/legacy/repos/search/'+this.state.keyword+'?start_page=1')
-      .then(function(response) {
-        return response.json();
-      }).then(function(json) {
-      json.repositories.map(function (repository) {
-        repositories.push(repository.name);
-      });
+  //   //Retrieves 100 repositories by the keyword selected on the params
+  //   var repositories = [];
+  //   fetch('https://api.github.com/legacy/repos/search/'+this.state.keyword+'?start_page=1')
+  //     .then(function(response) {
+  //       return response.json();
+  //     }).then(function(json) {
+  //     json.repositories.map(function (repository) {
+  //       repositories.push(repository.name);
+  //     });
 
-      if (repositories.length === 0 ){
-        this.setState({dataToShow:false});
-        return;
-      }
-      this.setState({repositoryList: repositories, dataToShow: true});
+  //     if (repositories.length === 0 ){
+  //       this.setState({dataToShow:false});
+  //       return;
+  //     }
+  //     this.setState({repositoryList: repositories, dataToShow: true});
+  //   }.bind(this)).catch(function(ex) {
+  //     console.log('error', ex)
+  //   })
 
+  // },
 
-    }.bind(this)).catch(function(ex) {
-      console.log('error', ex)
-    })
+  updateRepoList: async function() {
 
+    let repositories = [];
+    try {
+          let fetchList = await fetch('https://api.github.com/legacy/repos/search/'+this.state.keyword+'?start_page=1');
+          let listToJson = await fetchList.json();
+          let repoList = listToJson.repositories.map(function (repository) {
+            repositories.push(repository.name);
+          });
+
+          if (repositories.length === 0 ){
+            this.setState({dataToShow:false});
+            return;
+          }
+          this.setState({repositoryList: repositories, dataToShow: true});
+
+    } catch(e){
+          return e.message;
+    }
   },
 
   nextPage: function(){
